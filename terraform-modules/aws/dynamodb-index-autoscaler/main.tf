@@ -33,9 +33,9 @@ resource "aws_appautoscaling_target" "dynamodb_index_write_target" {
 resource "aws_appautoscaling_policy" "dynamodb_write_policy" {
   name               = "DynamoDBWriteCapacityUtilization:${aws_appautoscaling_target.dynamodb_index_write_target.resource_id}"
   policy_type        = "TargetTrackingScaling"
-  resource_id        = aws_appautoscaling_target.dynamodb_write_target.resource_id
-  scalable_dimension = aws_appautoscaling_target.dynamodb_write_target.scalable_dimension
-  service_namespace  = aws_appautoscaling_target.dynamodb_write_target.service_namespace
+  resource_id        = aws_appautoscaling_target.dynamodb_index_write_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.dynamodb_index_write_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.dynamodb_index_write_target.service_namespace
 
   target_tracking_scaling_policy_configuration {
     predefined_metric_specification {
